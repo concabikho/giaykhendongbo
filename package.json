@@ -1,0 +1,24 @@
+{
+  "name": "giaykhendongbo",
+  "version": "1.0.0",
+  "description": "PUBG Mobile VN - Tạo Giấy Khen Đồng Bo",
+  "main": "app.js",
+  "scripts": {
+    "build": "esbuild analytics.js --bundle --outfile=dist/analytics.js --format=iife",
+    "dev": "esbuild analytics.js --bundle --outfile=dist/analytics.js --format=iife --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pubg",
+    "certificate",
+    "generator"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.1.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.0"
+  }
+}
