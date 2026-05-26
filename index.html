@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG Mobile VN - Tạo Giấy Khen Đồng Bo</title>
+    <meta name="description" content="Trang web tạo giấy khen PUBG Mobile độc đáo. Tự động điền tên và tải về ảnh chất lượng cao để chia sẻ với đồng đội.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Montserrat:wght@400;600;700;800&family=Alex+Brush&family=Oswald:wght@600;700&family=Playfair+Display:ital,wght@1,600;1,800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons for buttons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Decoration Grid for Cyberpunk/PUBG theme -->
+        <div class="bg-grid"></div>
+        <div class="bg-glow"></div>
+        
+        <header class="app-header">
+            <div class="logo-area">
+                <i class="fa-solid fa-medal logo-icon animate-pulse"></i>
+                <div class="logo-text">
+                    <span class="logo-sub">CỘNG ĐỒNG PUBG MOBILE VN</span>
+                    <h1>GIẤY KHEN ĐỒNG BO</h1>
+                </div>
+            </div>
+        </header>
+        
+        <main class="main-content">
+            <!-- Left Panel: Editor & Controls -->
+            <section class="editor-panel card animate-slide-in">
+                <div class="card-header">
+                    <i class="fa-solid fa-sliders-h header-icon"></i>
+                    <h2>BẢNG ĐIỀU KHIỂN</h2>
+                </div>
+                
+                <div class="control-group">
+                    <label for="username">
+                        <i class="fa-solid fa-user-ninja label-icon"></i> TÊN ĐỒNG BO
+                    </label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        placeholder="Nhập tên của bạn..." 
+                        maxlength="30"
+                        autocomplete="off"
+                        value="Chiến Binh Chạy Bo"
+                    >
+                    <div class="helper-text">Hỗ trợ tối đa 30 ký tự, tự động thu nhỏ nếu tên dài.</div>
+                </div>
+                
+                <div class="control-row">
+                    <div class="control-group half-width">
+                        <label for="fontStyle">
+                            <i class="fa-solid fa-font label-icon"></i> KIỂU CHỮ TÊN
+                        </label>
+                        <select id="fontStyle">
+                            <option value="calligraphy" selected>Bay bổng (Calligraphy)</option>
+                            <option value="serif">Cổ điển (Serif Ý)</option>
+                            <option value="military">Quân đội (Bold Military)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group half-width">
+                        <label>
+                            <i class="fa-solid fa-palette label-icon"></i> MÀU CHỮ
+                        </label>
+                        <div class="color-options">
+                            <label class="color-option gold active" title="Vàng PUBG">
+                                <input type="radio" name="fontColor" value="gold" checked>
+                                <span class="color-preview"></span>
+                            </label>
+                            <label class="color-option red" title="Đỏ Crimson">
+                                <input type="radio" name="fontColor" value="red">
+                                <span class="color-preview"></span>
+                            </label>
+                            <label class="color-option black" title="Đen Carbon">
+                                <input type="radio" name="fontColor" value="black">
+                                <span class="color-preview"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="btnDownload" class="btn btn-primary btn-lg glow-effect">
+                    <span class="btn-content">
+                        <i class="fa-solid fa-download btn-icon"></i>
+                        <span>TẢI GIẤY KHEN (PNG)</span>
+                    </span>
+                    <span class="glow-layer"></span>
+                </button>
+            </section>
+            
+            <!-- Right Panel: Live Preview -->
+            <section class="preview-panel animate-slide-in delay-1">
+                <div class="card-header">
+                    <i class="fa-solid fa-eye header-icon"></i>
+                    <h2>BẢN XEM TRƯỚC HÌNH ẢNH</h2>
+                </div>
+                
+                <div class="preview-card-wrapper">
+                    <!-- Target element that acts as the container query parent -->
+                    <div class="certificate-preview-container" id="certificatePreview">
+                        <img id="bgTemplateImg" alt="Phôi Giấy Khen PUBG Mobile" class="bg-template-img">
+                        <!-- Dynamic name overlay placed absolutely above the line in the background -->
+                        <div class="name-overlay calligraphy font-color-gold" id="nameOverlay">
+                            Chiến Binh Chạy Bo
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="preview-caption">
+                    <i class="fa-solid fa-expand-arrows-alt"></i> Bản xem trước tự động co giãn vừa màn hình
+                </div>
+            </section>
+        </main>
+        
+        <footer class="app-footer">
+            <p>Một sản phẩm dành riêng cho Cộng đồng PUBG Mobile Việt Nam.</p>
+        </footer>
+    </div>
+    
+    <!-- Hidden High-Res Canvas for Drawing and Exporting -->
+    <canvas id="exportCanvas" width="6250" height="4419" style="display: none;"></canvas>
+    
+    <script src="template_data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
