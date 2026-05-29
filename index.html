@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@500;600;700&family=Montserrat:wght@400;600;700;800&family=Alex+Brush&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&family=Teko:wght@500;600;700&family=Montserrat:wght@400;600;700;800&family=Alex+Brush&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome icons for buttons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -109,7 +109,22 @@
                 
                 <button id="btnDownload" class="btn btn-primary btn-lg glow-effect">
                     <span class="btn-content">
-                        <i class="fa-solid fa-download btn-icon"></i>
+                        <!-- Custom Inline SVG PUBG Air Drop Crate Icon -->
+                        <svg class="btn-icon airdrop-icon animate-pulse" viewBox="0 0 24 24" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                            <!-- Shadow -->
+                            <rect x="5" y="18" width="14" height="2" fill="rgba(0,0,0,0.4)" rx="1" />
+                            <!-- Red Box Crate Body -->
+                            <rect x="5" y="11" width="14" height="7" fill="#d32f2f" rx="0.5" />
+                            <rect x="7" y="12" width="1.5" height="5" fill="#a81e1e" />
+                            <rect x="11.25" y="12" width="1.5" height="5" fill="#a81e1e" />
+                            <rect x="15.5" y="12" width="1.5" height="5" fill="#a81e1e" />
+                            <!-- Blue Tarp Cover with Wavy Folds -->
+                            <path d="M4 6.5 C4 6 4.5 5.5 5 5.5 H19 C19.5 5.5 20 6 20 6.5 V10.2 C20 10.8 19.3 11.2 18.7 11.0 L17.8 10.7 C17.3 10.5 16.7 10.7 16.3 11.1 L15.7 11.7 C15.3 12.1 14.7 12.3 14.1 12.2 L13.4 12.1 C12.8 12.0 12.2 12.2 11.8 12.6 L11.2 13.2 C10.8 13.6 10.2 13.8 9.6 13.7 L8.9 13.6 C8.3 13.5 7.7 13.7 7.3 14.1 L6.7 14.7 C6.3 15.1 5.7 15.3 5.1 15.2 L4 15.0 V6.5Z" fill="#1565c0" />
+                            <path d="M4 5.5 H20 V6.5 H4V5.5Z" fill="#0d47a1" />
+                            <!-- Yellow Cargo Straps -->
+                            <rect x="9" y="5.5" width="1.5" height="12.5" fill="#ffc107" />
+                            <rect x="13.5" y="5.5" width="1.5" height="12.5" fill="#ffc107" />
+                        </svg>
                         <span>NHẬN GIẤY KHEN</span>
                     </span>
                     <span class="glow-layer"></span>
