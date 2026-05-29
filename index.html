@@ -155,11 +155,33 @@
             </section>
         </main>
         
-        <footer class="app-footer">
-            <p>Một sản phẩm dành riêng cho Cộng đồng PUBG Mobile Việt Nam.</p>
-        </footer>
+    <!-- PUBG Style Reward Modal Dialog for Mobile Saving -->
+    <div id="rewardModal" class="modal-overlay" style="display: none;">
+        <div class="modal-card animate-zoom-in">
+            <button class="modal-close-btn" id="btnMapClose">&times;</button>
+            <div class="modal-header">
+                <i class="fa-solid fa-trophy modal-trophy animate-bounce"></i>
+                <h3>BATTLEGROUNDS REWARD</h3>
+                <h2>GIẤY KHEN ĐÃ SẴN SÀNG!</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modalExportedImg" src="" alt="Giấy Khen Của Bạn" class="modal-exported-img">
+                </div>
+                <div class="modal-instruction" id="modalInstruction">
+                    <!-- Populated dynamically by JS -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnModalDownload" class="btn btn-primary btn-lg glow-effect">
+                    <span class="btn-content">
+                        <i class="fa-solid fa-download"></i> TẢI XUỐNG LẠI
+                    </span>
+                </button>
+            </div>
+        </div>
     </div>
-    
+
     <!-- Hidden High-Res Canvas for Drawing and Exporting -->
     <canvas id="exportCanvas" width="6250" height="4419" style="display: none;"></canvas>
     

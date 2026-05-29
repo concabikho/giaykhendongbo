@@ -13,6 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgTemplateImg = document.getElementById('bgTemplateImg');
     const exportCanvas = document.getElementById('exportCanvas');
 
+    // Reward Modal DOM Elements
+    const rewardModal = document.getElementById('rewardModal');
+    const modalExportedImg = document.getElementById('modalExportedImg');
+    const modalInstruction = document.getElementById('modalInstruction');
+    const btnMapClose = document.getElementById('btnMapClose');
+    const btnModalDownload = document.getElementById('btnModalDownload');
+
     // State Variables
     let currentName = usernameInput.value.trim() || 'Chiến Binh Chạy Bo';
     let currentFont = fontStyleSelect.value;
@@ -184,9 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // 7. Draw the Name
             ctx.fillText(nameToDraw, targetX, targetY);
 
-            // 8. Create a virtual download link
+            // 8. Generate Image Data URL
             const dataUrl = exportCanvas.toDataURL('image/png');
-            const downloadLink = document.createElement('a');
             
             // Clean Vietnamese name to safe filename slug
             const safeName = nameToDraw
@@ -197,13 +203,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 .replace(/[^a-z0-9]/g, '_')
                 .replace(/_+/g, '_');
                 
-            downloadLink.download = `giay_khen_pubg_${safeName || 'dong_bo'}.png`;
-            downloadLink.href = dataUrl;
-            
-            // Click to download
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
+            const filename = `giay_khen_pubg_${safeName || 'dong_bo'}.png`;
+
+            // Display in Modal
+            if (modalExportedImg) {
+                modalExportedImg.src = dataUrl;
+            }
+
+            // Mobile Device Detection (Safari, Chrome iOS/Android & in-app webviews)
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth <= 768);
+
+            if (isMobile) {
+                // Populate instructions for Mobile (Press and hold to save)
+                if (modalInstruction) {
+                    modalInstruction.className = 'modal-instruction mobile-alert';
+                    modalInstruction.innerHTML = `<i class="fa-solid fa-fingerprint animate-pulse"></i> <strong>ĐỒNG BO CHÚ Ý (ĐIỆN THOẠI):</strong><br>Hãy <strong>NHẤN GIỮ VÀO HÌNH ẢNH TRÊN 2-3 GIÂY</strong> và chọn <strong>"LƯU HÌNH ẢNH"</strong> (hoặc "Tải hình ảnh xuống") để lưu trực tiếp về điện thoại nhé!`;
+                }
+                if (btnModalDownload) {
+                    btnModalDownload.style.display = 'none'; // Hide programmatic download on mobile
+                }
+            } else {
+                // Populate instructions for Desktop (Auto downloaded)
+                if (modalInstruction) {
+                    modalInstruction.className = 'modal-instruction';
+                    modalInstruction.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #4caf50;"></i> <strong>ĐÃ TỰ ĐỘNG TẢI GIẤY KHEN!</strong><br>Nếu ảnh chưa tự động tải về máy, hãy click nút <strong>TẢI XUỐNG LẠI</strong> bên dưới hoặc click chuột phải vào ảnh và chọn "Lưu hình ảnh thành..."`;
+                }
+                if (btnModalDownload) {
+                    btnModalDownload.style.display = 'inline-flex';
+                }
+
+                // Trigger programmatic auto-download only on Desktop
+                const downloadLink = document.createElement('a');
+                downloadLink.download = filename;
+                downloadLink.href = dataUrl;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            }
+
+            // Open the Gaming Reward Modal!
+            if (rewardModal) {
+                rewardModal.style.display = 'flex';
+            }
 
         } catch (error) {
             console.error('Error rendering certificate canvas:', error);
@@ -214,6 +255,47 @@ document.addEventListener('DOMContentLoaded', () => {
             btnDownload.style.pointerEvents = 'auto';
             btnDownload.innerHTML = originalText;
         }
+    }
+
+    // Modal Event Listeners (Close, Download again)
+    function closeModal() {
+        if (rewardModal) {
+            rewardModal.style.display = 'none';
+        }
+    }
+
+    if (btnMapClose) {
+        btnMapClose.addEventListener('click', closeModal);
+    }
+
+    // Close when clicking overlay (outside card)
+    if (rewardModal) {
+        rewardModal.addEventListener('click', (e) => {
+            if (e.target === rewardModal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Modal download button action (re-trigger download on Desktop)
+    if (btnModalDownload) {
+        btnModalDownload.addEventListener('click', () => {
+            const dataUrl = modalExportedImg.src;
+            const safeName = currentName
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/đ/g, 'd')
+                .replace(/[^a-z0-9]/g, '_')
+                .replace(/_+/g, '_');
+            
+            const downloadLink = document.createElement('a');
+            downloadLink.download = `giay_khen_pubg_${safeName || 'dong_bo'}.png`;
+            downloadLink.href = dataUrl;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        });
     }
 
     // Bind Download Button Action

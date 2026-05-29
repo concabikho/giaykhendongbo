@@ -736,3 +736,161 @@ select option {
         width: 100%;
     }
 }
+
+/* ==========================================================================
+   PUBG Style Reward Modal Dialog Styling
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 5, 7, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1.25rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.modal-card {
+    background: rgba(14, 18, 24, 0.96);
+    border: 3px solid var(--primary-gold);
+    box-shadow: 0 0 50px rgba(243, 112, 33, 0.45), inset 0 0 20px rgba(0,0,0,0.85);
+    border-radius: var(--border-radius);
+    width: 100%;
+    max-width: 680px;
+    padding: 1.8rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: center;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2.2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color var(--transition-speed);
+}
+
+.modal-close-btn:hover {
+    color: var(--primary-gold);
+}
+
+.modal-header h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.22em;
+    color: var(--primary-gold);
+    margin-bottom: 0.25rem;
+}
+
+.modal-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 0.04em;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+}
+
+.modal-trophy {
+    font-size: 2.8rem;
+    color: var(--primary-gold);
+    text-shadow: 0 0 25px rgba(243, 112, 33, 0.65);
+    margin-bottom: 0.4rem;
+}
+
+.modal-image-container {
+    border: 2px solid rgba(255,255,255,0.06);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    background: #0b0c10;
+    aspect-ratio: 960 / 679;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 50vh;
+}
+
+.modal-exported-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.modal-instruction {
+    background: rgba(243, 112, 33, 0.08);
+    border: 1.5px dashed var(--primary-gold);
+    border-radius: 4px;
+    padding: 0.95rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #f5f6f8;
+    line-height: 1.45;
+}
+
+.modal-instruction.mobile-alert {
+    background: rgba(211, 47, 47, 0.15);
+    border: 1.5px dashed var(--crimson-red);
+    box-shadow: 0 0 12px rgba(211, 47, 47, 0.2);
+    animation: alert-border-glow 1.5s infinite alternate ease-in-out;
+}
+
+.modal-instruction.mobile-alert strong {
+    color: var(--primary-gold);
+}
+
+.modal-instruction i {
+    margin-right: 0.4rem;
+    font-size: 1rem;
+}
+
+/* Modal Animation classes */
+.animate-zoom-in {
+    animation: zoomInReward 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes zoomInReward {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes alert-border-glow {
+    from {
+        border-color: var(--crimson-red);
+        box-shadow: 0 0 5px rgba(211, 47, 47, 0.2);
+    }
+    to {
+        border-color: var(--primary-gold);
+        box-shadow: 0 0 15px rgba(243, 112, 33, 0.4);
+    }
+}
+
+.animate-bounce {
+    animation: bounceIcon 2s infinite ease-in-out;
+}
+
+@keyframes bounceIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
